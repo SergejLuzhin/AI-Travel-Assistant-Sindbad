@@ -1,0 +1,50 @@
+Сгенерируй маршрут путешествия в формате JSON по следующей схеме.
+В ответе должен быть ТОЛЬКО JSON-объект без Markdown, без ``` и без текста вне JSON.
+НЕ возвращай JSON как строку — поля должны иметь корректные типы (особенно plan).
+
+Корневые поля: query, meta, city_info, plan, totals, sources.
+
+query:
+  city: {city}
+  date_range: {{ start_date: {start_date}, end_date: {end_date}, timezone: Europe/Moscow }}
+  budget: {{ total: {budget}, currency: RUB, per_person: false }}
+  people: {people}
+  preferences: {{ themes: [{activities_str}], pace: 'balanced', diet: [] }}
+
+meta:
+  generated_at: текущее время в ISO-8601
+  currency: RUB
+  language: ru
+  version: itinerary.v1
+  assumptions: список допущений (например, про погоду)
+  confidence: число 0..1
+
+city_info:
+  name: название города
+  country: страна
+  timezone: Europe/Moscow
+  center: {{ lat, lng }}
+
+plan:
+  Разбей план по дням: {days_phrase}.
+  ВНИМАНИЕ: поле plan ДОЛЖНО быть объектом ИЛИ массивом, НО НЕ строкой.
+  Допустимые варианты:
+    1) Массив дней: [ {{ date, day_budget, blocks[] }} ]
+    2) Объект дней: {{ "day_1": {{ date, day_budget, blocks[] }}, "day_2": {{ ... }} }}
+  Каждый block = {{ start, end, activity, place{{ name, category, geo{{ lat, lng }} }}, cost{{ ticket, currency }} }}
+  Все даты/время — ISO-8601; для времени указывай смещение часового пояса (например, +03:00).
+  Числа в cost.ticket — в копейках (integer), currency: "RUB".
+
+totals:
+  cost_minor: общая сумма в копейках (integer)
+  currency: RUB
+
+sources:
+  массив объектов {{ id, title, url }}
+
+Верни ТОЛЬКО один корректный JSON-объект без любых пояснений и без обёртки ```.
+
+Требования к качеству:
+- Заполняй не менее 3–5 блоков на день (если разумно).
+- Используй реальные категории (museum, restaurant, park и т. п.) на русском.
+- Краткие и информативные подписи в activity/detail (если используешь).
