@@ -36,7 +36,7 @@ plan:
   Числа в cost.ticket — в копейках (integer), currency: "RUB".
 
 totals:
-  cost_minor: общая сумма в копейках (integer)
+  cost_minor: общая сумма в рублях (integer)
   currency: RUB
 
 sources:
