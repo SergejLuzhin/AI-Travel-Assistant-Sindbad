@@ -80,7 +80,7 @@ async def generate_tour(req: TourRequest):
 
     logger.info("Prompt prepared: city=%s days=%d people=%d", city, trip_days, people)
 
-    # 6.6) Вызов OpenAI Responses API (как в твоём файле — через OpenAI-клиент и модель gpt-4o)
+    # 6.6) Вызов OpenAI Responses API 
     try:
         resp = client.responses.create(
             model=GPT_MODEL,
@@ -113,7 +113,7 @@ async def generate_tour(req: TourRequest):
             detail=f"Model did not return valid JSON: {e}. Snippet: {snippet}"
         )
 
-    # 6.9) (Необязательно) Лёгкая телеметрия токенов — как в твоём файле
+    # 6.9) Логирирование использования токенов 
     usage = getattr(resp, "usage", None)
     input_tokens = getattr(usage, "input_tokens", 0) if usage else 0
     output_tokens = getattr(usage, "output_tokens", 0) if usage else 0
