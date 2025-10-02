@@ -24,7 +24,13 @@ cp .env.example .env
 OPENAI_API_KEY=sk-ваш-ключ-от-OpenAI
 ```
 
-### 3. Запуск в режиме разработки (hot-reload)
+
+### 3.1 Обычный запуск (протестированный)
+```bash
+docker compose up --build
+```
+
+### 3.2 Запуск в режиме разработки (hot-reload)
 
 ```bash
 make dev
