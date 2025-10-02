@@ -1,0 +1,10 @@
+# docker-compose.tunnel.yml
+version: "3.9"
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    depends_on: [api]
+    # КЛЮЧЕВОЕ: уходим с QUIC на HTTP/2 по TCP и принудительно IPv4
+    command: tunnel --no-autoupdate --protocol http2 --edge-ip-version 4 --url http://api:8000
+    # Порты не нужны: cloudflared сам инициирует исходящее соединение

@@ -35,6 +35,18 @@ prod-down:
 prod-logs:
 	docker compose -f docker-compose.yml logs -f
 
+# ========================
+#  TUNELLING (запуск контейнера с Cloudflare Tunnel для возможности внешнего доступа)
+# ========================
+tunnel-up:
+	docker compose -f docker-compose.dev.yml -f docker-compose.tunnel.yml up -d --build
+
+tunnel-down:
+	docker compose -f docker-compose.dev.yml -f docker-compose.tunnel.yml down
+
+tunnel-logs:
+	docker logs -f cloudflared
+
 
 # ========================
 #  TESTS (быстрая проверка)
