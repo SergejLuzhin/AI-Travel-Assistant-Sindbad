@@ -1,0 +1,25 @@
+# локальное окружение
+.venv/
+venv/
+
+# байткод
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+
+# git
+.git
+.gitignore
+
+# секреты (в образ не копируем)
+.env
+
+# служебное
+*.egg-info/
+build/
+dist/

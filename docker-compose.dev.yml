@@ -1,0 +1,18 @@
+# docker-compose.dev.yml
+version: "3.9"
+services:
+  api:
+    build: .
+    container_name: travel-api-dev
+    working_dir: /app
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      - ./:/app            # одного маунта достаточно
+      - /app/.venv         # чтобы не перетёрло твой локальный venv (ок)
+    command: >
+      uvicorn app.main:app
+      --host 0.0.0.0 --port 8000
+      --reload --reload-dir /app
+    ports:
+      - "8000:8000"

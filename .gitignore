@@ -1,4 +1,23 @@
-# Virtual environment
+# виртуальное окружение
+.venv/
 venv/
+
+# системное
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE / редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# окружение и секреты
 .env
-*.env
+
+# пакеты / кэш
+*.egg-info/
+.dist/
+build/
