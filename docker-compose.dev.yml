@@ -9,7 +9,9 @@ services:
       - .env
     volumes:
       - .:/app:cached           # маунтим весь проект внутрь контейнера
-      - /app/.venv              # на всякий случай скрываем локальное .venv, если появится
+      - /app/.venv    
+      - ./static:/app/static:rw
+      - ./templates:/app/templates:rw          # на всякий случай скрываем локальное .venv, если появится
     command: >
       uvicorn app.main:app
       --host 0.0.0.0

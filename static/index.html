@@ -136,16 +136,20 @@
 
             <!-- Кнопка -->
             <div class="text-center mt-4">
-              <button type="submit" class="btn btn-primary px-5">
+              <!-- ✱ CHANGED: сделал кнопку НЕ submit, чтобы форма не уводила на /api/tours/generate -->
+              <button id="generateBtn" type="button" class="btn btn-primary px-5">
                 Сгенерировать тур
               </button>
+              <!-- /CHANGED -->
             </div>
           </div>
         </div>
       </form>
 
       <!-- Блок для вывода результата -->
-      <div id="description" class="col-md-8 mx-auto mt-4"></div>
+      <!-- ✱ CHANGED: заменил <div> на <pre>, чтобы JSON красиво форматировался моноширинно -->
+      <pre id="description" class="col-md-8 mx-auto mt-4 bg-light p-3 rounded border" style="white-space: pre-wrap;"></pre>
+      <!-- /CHANGED -->
     </div>
 
     <!-- Подключаем JS -->
