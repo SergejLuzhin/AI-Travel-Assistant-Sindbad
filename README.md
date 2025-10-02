@@ -7,13 +7,12 @@
 ### 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/your-org/travel-api.git
-cd travel-api
+git clone https://github.com/SergejLuzhin/AI-Travel-Assistant-Sindbad.git
 ```
 
 ### 2. Настройка окружения
 
-Скопируйте файл `.env.example` в `.env` и вставьте свой ключ OpenAI API:
+Скопируйте файл `.env.example` в `.env` и вставьте ключ OpenAI API:
 
 ```bash
 cp .env.example .env
