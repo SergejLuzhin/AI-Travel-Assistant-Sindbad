@@ -1,0 +1,12 @@
+# docker-compose.ngrok.yml
+version: "3.9"
+services:
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ngrok
+    depends_on: [api]  # сервис api из docker-compose.dev.yml
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
+    # Пробрасываем публичный домен на контейнер api:8000
+    command: http --url=${NGROK_DOMAIN} http://api:8000
+    restart: unless-stopped

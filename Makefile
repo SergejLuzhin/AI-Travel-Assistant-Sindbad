@@ -47,6 +47,19 @@ tunnel-down:
 tunnel-logs:
 	docker logs -f cloudflared
 
+# ========================
+#  TUNELLING через NGROK (альтернативный способ внешнего доступа)
+# ========================
+
+ngrok-up:
+	docker compose -f docker-compose.dev.yml -f docker-compose.ngrok.yml up -d --build
+
+ngrok-down:
+	docker compose -f docker-compose.dev.yml -f docker-compose.ngrok.yml down
+
+ngrok-logs:
+	docker logs -f ngrok
+
 
 # ========================
 #  TESTS (быстрая проверка)
