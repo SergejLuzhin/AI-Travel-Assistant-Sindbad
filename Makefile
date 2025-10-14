@@ -1,3 +1,6 @@
+build:
+	docker compose up --build
+
 # ========================
 #  DEVELOPMENT (горячая перезагрузка, маунт кода)
 # ========================
@@ -53,6 +56,7 @@ tunnel-logs:
 
 ngrok-up:
 	docker compose -f docker-compose.dev.yml -f docker-compose.ngrok.yml up -d --build
+	echo "\n Site Address: \n alline-seamier-anastasia.ngrok-free.dev"
 
 ngrok-down:
 	docker compose -f docker-compose.dev.yml -f docker-compose.ngrok.yml down
