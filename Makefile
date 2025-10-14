@@ -56,7 +56,7 @@ tunnel-logs:
 
 ngrok-up:
 	docker compose -f docker-compose.dev.yml -f docker-compose.ngrok.yml up -d --build
-	echo "\n Site Address: \n alline-seamier-anastasia.ngrok-free.dev"
+	echo "\n Site address: \n alline-seamier-anastasia.ngrok-free.dev"
 
 ngrok-down:
 	docker compose -f docker-compose.dev.yml -f docker-compose.ngrok.yml down
